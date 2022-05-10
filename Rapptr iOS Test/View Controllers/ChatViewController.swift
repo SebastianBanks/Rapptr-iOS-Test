@@ -77,7 +77,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         configureTable(tableView: chatTable)
         title = "Chat"
         self.view.backgroundColor = .viewBackground
-        
+        getMessages()
+    }
+    
+    func getMessages() {
         ChatClient.fetchChatData { result in
             DispatchQueue.main.async {
                 switch result {
@@ -89,22 +92,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
-        
-        // TODO: Remove test data when we have actual data from the server loaded
-//        messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
-//        messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
-//        messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
-//        messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
-//        messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
-//        messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
-//        messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
-//        messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
-//        messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
-//
-//        chatTable.reloadData()
     }
     
-    func getMessages() {
-        
-    }
 }
